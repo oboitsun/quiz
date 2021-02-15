@@ -108,7 +108,6 @@ body {
   background-image: linear-gradient(to top, #43e97b 0%, #38f9d7 100%);
 }
 .button-container {
-  padding: 0 10px;
   display: flex;
   justify-content: space-around;
 }
@@ -164,6 +163,13 @@ body {
     max-width: 95%;
   }
   .button-container {
-    padding-bottom: 20px;
   }
+}
+
+.agree-or-not {
+  position: relative;
+  left: -8px;
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
 }
