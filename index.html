@@ -13,14 +13,28 @@
     <title>Quiz</title>
   </head>
   <body>
+    <span class="home"
+      ><span class="home-arrow">&#10229;</span
+      ><a class="home-url" href="">Home</a></span
+    >
     <div class="wrapper">
       <div class="quiz-container">
         <div id="quizChart" class="chart-container">
-          <div id="bar-vis" class="bar"></div>
-          <div id="bar-enhance" class="bar"></div>
-          <div id="bar-str" class="bar"></div>
-          <div id="bar-protect" class="bar"></div>
-          <div id="bar-promote" class="bar"></div>
+          <div id="topBar"></div>
+          <div class="chart-bars">
+            <div id="bar-vis" class="bar"></div>
+            <div id="bar-enhance" class="bar"></div>
+            <div id="bar-str" class="bar"></div>
+            <div id="bar-protect" class="bar"></div>
+            <div id="bar-promote" class="bar"></div>
+          </div>
+          <div id="chartLegends" class="chart-legends">
+            <div class="chart-letter">V</div>
+            <div class="chart-letter">E</div>
+            <div class="chart-letter">S</div>
+            <div class="chart-letter">D</div>
+            <div class="chart-letter">P</div>
+          </div>
         </div>
         <div id="qContainer" class="qst-container">
           <span id="qTitle" class="qst-title"></span>
@@ -35,7 +49,8 @@
           <button class="button" value="6"></button>
         </div>
         <div id="quizFinish" class="quiz-finish">
-          <p>WELL DONE!!!</p>
+          <p></p>
+          <p id="fCategory" class="finish-category"></p>
         </div>
       </div>
     </div>

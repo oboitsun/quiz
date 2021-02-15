@@ -4,6 +4,7 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,6 +12,29 @@ body {
   height: 100vh;
   width: 100vw;
 }
+.home {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 1rem;
+}
+.home-arrow {
+  position: relative;
+  top: -2px;
+  width: 10px;
+  overflow: hidden;
+  font-size: 1.25rem;
+}
+.home-url,
+.home-url:visited {
+  margin-left: 5px;
+  color: black;
+  text-transform: uppercase;
+  text-decoration-line: none;
+}
+
 .wrapper {
   display: flex;
 
@@ -35,8 +59,31 @@ body {
 .chart-container {
   width: 300px;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+}
+.chart-bars {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
   align-items: flex-end;
+}
+.chart-legends {
+  font-size: 2rem;
+  font-weight: 400;
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+
+  transition: visibility 1s ease-in-out 1s;
+}
+.chart-letter {
+  text-align: center;
+  width: 50px;
+}
+#topBar {
+  font-size: 2rem;
+  text-align: center;
 }
 .bar {
   background-color: blueviolet;
@@ -71,15 +118,14 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: transparent;
-  border: 2px solid black;
-  transition: background-color 0.3s ease-in;
+  border: none;
+  transform: scale(1);
+  transition: transform 0.1s ease-in;
   text-align: center;
   text-decoration: none;
 }
 .button:hover {
-  background-color: #46aef7;
-  transition: background-color 0.3s ease-in;
+  transform: scale(1.1);
 }
 .button:focus {
   outline: 0;
@@ -107,7 +153,7 @@ body {
 }
 
 .quiz-finish {
-  font-size: 24px;
+  font-size: 3rem;
   font-weight: 400;
 }
 
