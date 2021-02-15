@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Quiz</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="quiz-container">
+        <div id="quizChart" class="chart-container">
+          <div id="bar-vis" class="bar"></div>
+          <div id="bar-enhance" class="bar"></div>
+          <div id="bar-str" class="bar"></div>
+          <div id="bar-protect" class="bar"></div>
+          <div id="bar-promote" class="bar"></div>
+        </div>
+        <div id="qContainer" class="qst-container">
+          <span id="qTitle" class="qst-title"></span>
+          <span id="qContent" class="qst-content"></span>
+        </div>
+        <div id="bContainer" class="button-container">
+          <button class="button" value="1"></button>
+          <button class="button" value="2"></button>
+          <button class="button" value="3"></button>
+          <button class="button" value="4"></button>
+          <button class="button" value="5"></button>
+          <button class="button" value="6"></button>
+        </div>
+        <div id="quizFinish" class="quiz-finish">
+          <p>WELL DONE!!!</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

@@ -1,0 +1,123 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.wrapper {
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-clip: border-box;
+}
+.quiz-container {
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.chart-container {
+  width: 300px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+.bar {
+  background-color: blueviolet;
+  border-radius: 8px;
+  width: 50px;
+  max-height: 5px;
+  transition: max-height 0.5s ease-in 1s;
+}
+#bar-vis {
+  background-image: linear-gradient(to bottom, #fad0c4 0%, #ffd1ff 100%);
+}
+#bar-str {
+  background-image: linear-gradient(to top, #a1c4fd 0%, #c2e9fb 100%);
+}
+#bar-enhance {
+  background-image: linear-gradient(to bottom, #f6d365 0%, #fda085 100%);
+}
+#bar-protect {
+  background-image: linear-gradient(to bottom, #f093fb 0%, #f5576c 100%);
+}
+#bar-promote {
+  background-image: linear-gradient(to top, #43e97b 0%, #38f9d7 100%);
+}
+.button-container {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.button {
+  margin: 10px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid black;
+  transition: background-color 0.3s ease-in;
+  text-align: center;
+  text-decoration: none;
+}
+.button:hover {
+  background-color: #46aef7;
+  transition: background-color 0.3s ease-in;
+}
+.button:focus {
+  outline: 0;
+}
+
+.qst-container {
+  text-align: center;
+  min-height: 165px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.qst-title {
+  text-transform: uppercase;
+
+  font-weight: 500;
+  font-size: 1rem;
+}
+.qst-content {
+  margin: auto 0;
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.quiz-finish {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .qst-container {
+    margin: auto;
+    min-height: 380px;
+    max-width: 95%;
+  }
+  .button-container {
+    padding-bottom: 20px;
+  }
+}
