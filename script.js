@@ -51,7 +51,7 @@ let chartLetter = [...document.getElementsByClassName('chart-letter')]
 let quizFinish = document.getElementById('quizFinish')
 let fCategory = document.getElementById('fCategory')
 let button = [...document.getElementsByClassName('button')]
-let qIndex = 25
+let qIndex = 0
 function StartQuiz(qObj) {
   let questionArr = []
 
