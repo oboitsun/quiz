@@ -119,7 +119,6 @@ const Bar = function (id, type, color) {
   bar.el = document.getElementById(id)
   bar.maxHeight = 5
   bar.setHeight = function (h) {
-    console.log(parseInt(h))
     bar.maxHeight += parseInt(h)
   }
   bar.showHeight = function () {
