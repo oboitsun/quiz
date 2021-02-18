@@ -48,56 +48,50 @@ let bContainer = document.getElementById('bContainer')
 let quizChart = document.getElementById('quizChart')
 let chartLegends = document.getElementById('chartLegends')
 let chartLetter = [...document.getElementsByClassName('chart-letter')]
+let agreedLine = document.getElementById('agreedLine')
 let quizFinish = document.getElementById('quizFinish')
 let fCategory = document.getElementById('fCategory')
 let button = [...document.getElementsByClassName('button')]
 let qIndex = 0
-function StartQuiz(qObj) {
-  let questionArr = []
-
+function quizStarter(i, arr) {
   quizChart.style.height = '0'
   chartLegends.style.display = 'none'
   qContainer.style.display = 'flex'
   bContainer.style.display = 'flex'
   quizFinish.style.display = 'none'
+  document.getElementById('qTitle').textContent = `Question ${i + 1} of ${
+    questionArray.length
+  }`
+  document.getElementById('qContent').textContent = arr[i]
+}
+function questionGenerateAndShuffle(qObj) {
+  let questionArr = []
+
   for (let val of Object.values(qObj)) {
     questionArr.push(val)
   }
   questionArr = questionArr.flat()
   questionArr = questionArr.sort((q) => Math.random() - 0.5)
+
   return questionArr
 }
-function questionChanges(i, qArray) {
-  if (i === 0) {
-    let whichIs = Object.keys(hardCodedQuestions).find((key) => {
-      let qst = hardCodedQuestions[key].indexOf(questionArray[qIndex])
-      if (qst > -1) return key
-    })
-    let currBar = bars.find((it) => it.type === whichIs)
-    button.forEach((it) => (it.style.background = currBar.color))
-  }
-  document.getElementById('qTitle').textContent = `Question ${i + 1} of ${
-    qArray.length
-  }`
-  document.getElementById('qContent').textContent = qArray[i]
-
-  if (i >= qArray.length) {
-    showfinishiQuiz()
-  }
-}
-function questionInit(i, qArray, event) {
+function questionChanges(i, qArray, event) {
   let whichIs = Object.keys(hardCodedQuestions).find((key) => {
     let qst = hardCodedQuestions[key].indexOf(questionArray[qIndex])
     if (qst > -1) return key
   })
-  let currBar = bars.find((it) => it.type === whichIs)
-  button.forEach((it) => (it.style.background = currBar.color))
-
-  if (event && whichIs) currBar.setHeight(event.target.value)
-  if (qIndex < qArray.length) {
-    questionChanges(i + 1, qArray)
-    return ++qIndex
+  if (i + 1 >= qArray.length) {
+    return showfinishiQuiz()
   }
+  console.log(whichIs)
+  let currBar = bars.find((it) => it.type === whichIs)
+  if (event && whichIs) currBar.setHeight(event.target.value)
+  document.getElementById('qTitle').textContent = `Question ${i + 2} of ${
+    qArray.length
+  }`
+  document.getElementById('qContent').textContent = qArray[i + 1]
+  console.log(bars.forEach((b) => console.log(`${b.type}: ${b.maxHeight}`)))
+  return ++qIndex
 }
 
 function showfinishiQuiz() {
@@ -109,6 +103,7 @@ function showfinishiQuiz() {
   quizChart.style.height = '100%'
   quizChart.style.maxHeight = '350px'
   quizFinish.style.display = 'flex'
+  agreedLine.style.display = 'none'
   let getTop = bars.sort((a, b) => b.maxHeight - a.maxHeight)
   document.getElementById(
     'topBar'
@@ -124,16 +119,17 @@ const Bar = function (id, type, color) {
   bar.el = document.getElementById(id)
   bar.maxHeight = 5
   bar.setHeight = function (h) {
-    this.maxHeight = this.maxHeight + h * 2
+    console.log(parseInt(h))
+    bar.maxHeight += parseInt(h)
   }
   bar.showHeight = function () {
     this.el.style.display = 'block'
     this.el.style.height = '100%'
-    this.el.style.maxHeight = `${this.maxHeight}%`
+    this.el.style.maxHeight = `${this.maxHeight * 2}%`
   }
   return bar
 }
-const questionArray = StartQuiz(hardCodedQuestions)
+const questionArray = questionGenerateAndShuffle(hardCodedQuestions)
 const bVis = Bar('bar-vis', 'VISIONARY', '#fad0c4')
 const bEnhance = Bar('bar-enhance', 'ENHANCER', '#a1c4fd')
 const bProtect = Bar('bar-protect', 'PROTECTOR', '#f6d365')
@@ -144,9 +140,11 @@ let bars = [bVis, bEnhance, bStr, bProtect, bPromote]
 document.addEventListener('click', (event) => {
   switch (event.target.className) {
     case 'button':
-      questionInit(qIndex, questionArray, event)
+      questionChanges(qIndex, questionArray, event)
+
     default:
       break
   }
 })
-questionChanges(qIndex, questionArray)
+
+quizStarter(qIndex, questionArray)
