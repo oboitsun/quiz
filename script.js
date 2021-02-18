@@ -83,14 +83,14 @@ function questionChanges(i, qArray, event) {
   if (i + 1 >= qArray.length) {
     return showfinishiQuiz()
   }
-  console.log(whichIs)
+
   let currBar = bars.find((it) => it.type === whichIs)
   if (event && whichIs) currBar.setHeight(event.target.value)
   document.getElementById('qTitle').textContent = `Question ${i + 2} of ${
     qArray.length
   }`
   document.getElementById('qContent').textContent = qArray[i + 1]
-  console.log(bars.forEach((b) => console.log(`${b.type}: ${b.maxHeight}`)))
+
   return ++qIndex
 }
 
